@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" 
+     viewBox="0 0 500 100" 
+     preserveAspectRatio="none">
+
+  <!-- Gradient Definition -->
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="16%" stop-color="rgba(33, 13, 22, 1)" />
+      <stop offset="40%" stop-color="rgba(184, 40, 105, 1)" />
+      <stop offset="60%" stop-color="rgba(229, 9, 20, 1)" />
+      <stop offset="80%" stop-color="rgba(184, 40, 105, 1)" />
+      <stop offset="84%" stop-color="rgba(33, 13, 22, 1)" />
+    </linearGradient>
+  </defs>
+
+  <!-- Curved Line -->
+  <path d="M0,50 Q250,0 500,50" 
+        stroke="url(#grad)" 
+        stroke-width="6" 
+        fill="transparent" />
+</svg>
