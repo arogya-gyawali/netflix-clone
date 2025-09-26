@@ -1,30 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Martel+Sans:wght@200;300;400;600;700;800;900&display=swap');
 
-*{
+* {
     font-family: 'Poppins', sans-serif;
     padding: 0;
     margin: 0;
 }
-.main{
+
+body {
+    background-color: black;
+}
+
+.main {
     background-image: url("Assets/images/bg.jpg");
     background-position: center center;
     background-size: max(1200px, 100vw);
     background-repeat: no-repeat;
     height: 70vh;
-    position:relative
+    position: relative
 }
 
-.main .box{
+.main .box {
     height: 70vh;
     width: 100%;
-    opacity: 0.44;
-    position:absolute;
+    opacity: 0.69;
+    position: absolute;
     top: 0;
     background-color: black;
 }
 
-nav{
-    display:flex;
+nav {
+    display: flex;
     max-width: 60vw;
     height: 62px;
     justify-content: space-between;
@@ -34,7 +39,7 @@ nav{
     z-index: 10;
 }
 
-nav img{
+nav img {
     color: red;
     width: 120px;
     position: relative;
@@ -43,7 +48,7 @@ nav img{
 
 .hero {
     font-family: "Martel Sans", sans-serif;
-    height: 100%;
+    height: calc(100% - 62px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -51,18 +56,76 @@ nav img{
     color: rgb(245, 242, 242);
     font-size: large;
     position: relative;
-    gap: 15px;
+    gap: 23px;
+    padding: 0 20px;
 }
 
-.hero :first-child{
-    font-weight: 700;
-    font-size: 40px;
+.hero> :first-child {
+    font-family: "Martel Sans";
+    font-weight: 900;
+    font-size: 45px;
     text-align: center;
+    line-height: 50px;
+    text-size-adjust: 100%;
 }
 
-.hero :nth-child(2){
+.hero> :nth-child(2) {
     font-weight: 400;
     font-size: 16px;
     text-align: center;
     max-width: 600px;
+    line-height: 1.5;
+}
+
+.hero> :nth-child(3) {
+    font-weight: 400;
+    font-size: 16px;
+    text-align: center;
+    max-width: 600px;
+    line-height: 1.5;
+}
+
+.separation {
+    height: 7px;
+    background-color: rgb(32, 32, 32);
+}
+
+.curved-separator {
+    position: relative;
+    height: 60px;
+    /* adjust for curve size */
+    border-top-left-radius: 50% 100%;
+    border-top-right-radius: 50% 100%;
+    background: black;
+    overflow: hidden;
+    /* keeps ::before inside */
+}
+
+.curved-separator::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* shorthand for top/right/bottom/left: 0 */
+    border-top-left-radius: 500px 100px;
+    border-top-right-radius: 500px 100px;
+    border: 3px solid transparent;
+    /* line thickness */
+    border-bottom: none;
+    /* only keep the curve */
+    background: linear-gradient(to right,
+            rgba(33, 13, 22, 1) 16%,
+            rgba(184, 40, 105, 1),
+            rgba(229, 9, 20, 1),
+            rgba(184, 40, 105, 1),
+            rgba(33, 13, 22, 1) 84%) border-box;
+    /* gradient applied to border */
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    /* mask for border only */
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
 }
