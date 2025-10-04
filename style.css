@@ -85,20 +85,19 @@ nav img {
     line-height: 1.5;
 }
 
-.separation {
-    height: 7px;
-    background-color: rgb(32, 32, 32);
-}
-
 .curved-separator {
     position: relative;
+    /* This is crucial for the ::before element */
     height: 60px;
-    /* adjust for curve size */
+    /* Adjust for curve size */
+    background: black;
+    /* Matches the background of the next section */
+    overflow: hidden;
+    /* Keeps the pseudo-element contained */
+
+    /* These two lines create the main curve shape */
     border-top-left-radius: 50% 100%;
     border-top-right-radius: 50% 100%;
-    background: black;
-    overflow: hidden;
-    /* keeps ::before inside */
 }
 
 .curved-separator::before {
@@ -106,26 +105,22 @@ nav img {
     position: absolute;
     inset: 0;
     /* shorthand for top/right/bottom/left: 0 */
+
+    /* These create the curve for the border itself */
     border-top-left-radius: 500px 100px;
     border-top-right-radius: 500px 100px;
+
     border: 3px solid transparent;
-    /* line thickness */
+    /* Line thickness */
     border-bottom: none;
-    /* only keep the curve */
-    background: linear-gradient(to right,
-            rgba(33, 13, 22, 1) 16%,
-            rgba(184, 40, 105, 1),
-            rgba(229, 9, 20, 1),
-            rgba(184, 40, 105, 1),
-            rgba(33, 13, 22, 1) 84%) border-box;
-    /* gradient applied to border */
-    -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-    mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-    /* mask for border only */
+    /* Only keep the top curved border */
+
+    /* The gradient is applied to the background and clipped to the border */
+    background: linear-gradient(to right, rgba(33, 13, 22, 1) 16%, rgba(184, 40, 105, 1), rgba(229, 9, 20, 1), rgba(184, 40, 105, 1), rgba(33, 13, 22, 1) 84%) border-box;
+
+    /* This is the magic part: it cuts out the inside of the pseudo-element, leaving only the border visible */
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
 }
